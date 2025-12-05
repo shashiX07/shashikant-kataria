@@ -127,7 +127,7 @@ const Contact = () => {
                     className="border-primary hover:bg-primary/10"
                     asChild
                   >
-                    <a href="https://www.linkedin.com/in/shashikantkataria/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/in/shashikant-kataria/" target="_blank" rel="noopener noreferrer">
                       <Linkedin className="h-5 w-5" />
                     </a>
                   </Button>
@@ -137,7 +137,7 @@ const Contact = () => {
                     className="border-primary hover:bg-primary/10"
                     asChild
                   >
-                    <a href="https://www.instagram.com/shashikataria_/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.instagram.com/shashii.kant07/" target="_blank" rel="noopener noreferrer">
                       <Instagram className="h-5 w-5" />
                     </a>
                   </Button>
