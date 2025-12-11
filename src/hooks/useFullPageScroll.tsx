@@ -27,6 +27,9 @@ export const useFullPageScroll = () => {
   // Keep navigate ref updated
   navigateRef.current = navigate;
 
+  // Disable full-page scroll for blog routes
+  const isBlogRoute = location.pathname.startsWith('/blog');
+
   const currentIndex = routes.indexOf(location.pathname);
   currentIndexRef.current = currentIndex;
 
@@ -55,6 +58,9 @@ export const useFullPageScroll = () => {
     };
 
     const handleWheel = (e: WheelEvent) => {
+      // Disable for blog routes
+      if (isBlogRoute) return;
+      
       // If currently transitioning, block all scroll
       if (isScrollingRef.current) {
         e.preventDefault();
@@ -118,6 +124,9 @@ export const useFullPageScroll = () => {
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
+      // Disable for blog routes
+      if (isBlogRoute) return;
+      
       if (isScrollingRef.current) return;
       
       const current = currentIndexRef.current;
@@ -140,7 +149,7 @@ export const useFullPageScroll = () => {
       window.removeEventListener("keydown", handleKeyDown);
       if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
     };
-  }, []); // EMPTY DEPS - event listeners stay attached forever
+  }, [isBlogRoute]); // Re-add listeners when blog route changes
 
   const manualScrollToSection = useCallback(
     (index: number) => {

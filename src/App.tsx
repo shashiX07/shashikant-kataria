@@ -16,6 +16,8 @@ import PORs from "./pages/PORs";
 import Achievements from "./pages/Achievements";
 import Resume from "./pages/Resume";
 import Contact from "./pages/Contact";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -51,6 +53,8 @@ const AppContent = () => {
           <Route path="/achievements" element={<PageWrapper><Achievements /></PageWrapper>} />
           <Route path="/resume" element={<PageWrapper><Resume /></PageWrapper>} />
           <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
+          <Route path="/blog" element={<PageWrapper><Blog /></PageWrapper>} />
+          <Route path="/blog/:slug" element={<PageWrapper><BlogPost /></PageWrapper>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </AnimatePresence>
