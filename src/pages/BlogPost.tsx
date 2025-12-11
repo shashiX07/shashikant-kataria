@@ -131,7 +131,6 @@ const BlogPost = () => {
         <meta name="twitter:description" content={blog.description} />
         <meta name="twitter:image" content={`https://shashikant-kataria.vercel.app${blog.coverImage}`} />
         <link rel="canonical" href={`https://shashikant-kataria.vercel.app/blog/${blog.slug}`} />
-        {/* JSON-LD Structured Data */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",

@@ -21,7 +21,6 @@ This is a test blog post.
 Content here.
 `;
 
-// Simple test framework
 let testsPassed = 0;
 let testsFailed = 0;
 
