@@ -4,7 +4,7 @@ description: "A comprehensive guide to starting your journey in Web3 and blockch
 date: "2024-12-10"
 author: "Shashikant Kataria"
 tags: ["Web3", "Blockchain", "Development", "Tutorial"]
-coverImage: "/src/blogs/images/web3-getting-started.jpg"
+coverImage: "/blog-images/web3-getting-started.jpg"
 ---
 
 # Getting Started with Web3 Development

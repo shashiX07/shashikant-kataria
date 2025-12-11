@@ -4,7 +4,7 @@ description: "Reflections on my time at IIT Kharagpur - the challenges, growth, 
 date: "2024-11-25"
 author: "Shashikant Kataria"
 tags: ["IIT Kharagpur", "Education", "Personal Growth", "Leadership"]
-coverImage: "/src/blogs/images/iitkgp.jpeg"
+coverImage: "/blog-images/iitkgp.jpeg"
 ---
 
 # My Journey at IIT Kharagpur: 

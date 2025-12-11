@@ -4,7 +4,7 @@ description: "Learn how to build a modern full-stack application using React for
 date: "2024-12-08"
 author: "Shashikant Kataria"
 tags: ["React", "FastAPI", "Full Stack", "Python", "Tutorial"]
-coverImage: "/src/blogs/images/react-fastapi.jpg"
+coverImage: "/blog-images/react-fastapi.jpg"
 ---
 
 # Building a Full Stack App with React and FastAPI
