@@ -61,6 +61,40 @@ const BlogPost = () => {
     };
   }, [blog]);
 
+  useEffect(() => {
+    const article = document.querySelector("article");
+    if (!article) return;
+    // Remove any existing copy buttons to avoid duplicates
+    article.querySelectorAll(".copy-code-btn").forEach(btn => btn.remove());
+    // Find all code block containers
+    article.querySelectorAll(".code-block-container").forEach((container) => {
+      const pre = container.querySelector("pre");
+      if (!pre || container.querySelector(".copy-code-btn")) return;
+      // Create the button
+      const button = document.createElement("button");
+      button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="9" y="9" width="13" height="13" rx="2" fill="currentColor" fill-opacity="0.1"/><rect x="3" y="3" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/></svg>Copy code`;
+      button.className = "copy-code-btn absolute top-3 right-3 z-10 px-3 py-1.5 rounded-md bg-black/80 text-xs text-white font-semibold border border-white/10 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 focus:opacity-100 hover:bg-primary hover:text-white";
+      button.type = "button";
+      button.style.pointerEvents = "auto";
+      button.onclick = () => {
+        const code = pre.querySelector("code");
+        if (code) {
+          navigator.clipboard.writeText(code.innerText);
+          button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke="currentColor" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Copied!`;
+          button.classList.add("bg-green-600");
+          setTimeout(() => {
+            button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="9" y="9" width="13" height="13" rx="2" fill="currentColor" fill-opacity="0.1"/><rect x="3" y="3" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/></svg>Copy code`;
+            button.classList.remove("bg-green-600");
+          }, 1200);
+        }
+      };
+      // Ensure container is relative for absolute positioning
+      container.classList.add("relative", "group");
+      pre.classList.add("pr-16");
+      container.appendChild(button);
+    });
+  }, [blog?.html]);
+
   if (!blog) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
@@ -158,7 +192,6 @@ const BlogPost = () => {
         {blog.toc && blog.toc.length > 0 && (
           <Card className="p-8 mb-10 bg-gradient-to-br from-muted/50 to-muted/30 border-2 border-primary/20">
             <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-              <span className="text-primary">📑</span>
               Table of Contents
             </h2>
             <ul className="space-y-3">

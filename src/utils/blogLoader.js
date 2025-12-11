@@ -52,7 +52,12 @@ function getTextFromTokens(tokens) {
 renderer.code = function(token) {
   const code = token.text || token.raw || '';
   const lang = token.lang || 'plaintext';
-  return `<pre class="language-${lang}"><code class="language-${lang}">${escapeHtml(code)}</code></pre>`;
+  // Wrap in a container for copy button and hover effect
+  return `
+    <div class="code-block-container group relative my-4">
+      <pre class="language-${lang}"><code class="language-${lang}">${escapeHtml(code)}</code></pre>
+    </div>
+  `;
 };
 
 // Custom inline code renderer
