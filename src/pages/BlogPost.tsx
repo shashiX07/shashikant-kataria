@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -116,6 +117,34 @@ const BlogPost = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>{blog.title} | Shashikant Kataria</title>
+        <meta name="description" content={blog.description} />
+        <meta name="author" content={blog.author} />
+        <meta property="og:title" content={blog.title + " | Shashikant Kataria"} />
+        <meta property="og:description" content={blog.description} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={`https://shashikant-kataria.vercel.app/blog/${blog.slug}`} />
+        <meta property="og:image" content={`https://shashikant-kataria.vercel.app${blog.coverImage}`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={blog.title + " | Shashikant Kataria"} />
+        <meta name="twitter:description" content={blog.description} />
+        <meta name="twitter:image" content={`https://shashikant-kataria.vercel.app${blog.coverImage}`} />
+        <link rel="canonical" href={`https://shashikant-kataria.vercel.app/blog/${blog.slug}`} />
+        {/* JSON-LD Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": blog.title,
+            "image": `https://shashikant-kataria.vercel.app${blog.coverImage}`,
+            "author": { "@type": "Person", "name": blog.author },
+            "datePublished": blog.date,
+            "description": blog.description,
+            "url": `https://shashikant-kataria.vercel.app/blog/${blog.slug}`
+          })}
+        </script>
+      </Helmet>
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Back Button */}
         <Link to="/blog" className="inline-block mb-8">

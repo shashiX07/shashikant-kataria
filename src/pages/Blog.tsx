@@ -41,7 +41,7 @@ const Blog = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent">
             Blog
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl mt-2 text-muted-foreground max-w-2xl mx-auto">
             Thoughts on web development, technology, and my journey in tech
           </p>
         </div>
