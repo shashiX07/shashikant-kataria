@@ -97,16 +97,12 @@ marked.setOptions({
 export function getAllBlogs() {
   const blogs = [];
   
-  console.log('Loading blogs...', Object.keys(markdownFiles));
 
   for (const [slug, markdownContent] of Object.entries(markdownFiles)) {
     try {
-      console.log(`Processing blog: ${slug}`);
-      
+
       // Parse frontmatter from markdown
       const { data: frontmatter, content } = matter(markdownContent);
-      
-      console.log(`Frontmatter for ${slug}:`, frontmatter);
       
       // Convert markdown to HTML
       const html = marked.parse(content);
@@ -131,14 +127,12 @@ export function getAllBlogs() {
         date: frontmatter.date ? new Date(frontmatter.date) : new Date(),
       };
       
-      console.log(`Blog post created:`, blogPost.title);
       blogs.push(blogPost);
     } catch (error) {
       console.error('Error processing blog:', slug, error);
     }
   }
 
-  console.log(`Total blogs loaded: ${blogs.length}`);
   
   // Sort by date (newest first)
   return blogs.sort((a, b) => b.date - a.date);
