@@ -11,6 +11,14 @@ coverImage: "/blog-images/iitkgp.jpeg"
 
 When I first stepped into IIT Kharagpur, I had no idea how transformative the next few years would be. This is my journey of growth, challenges, and the lessons that shaped who I am today.
 
+## Historical Roots of IIT Kharagpur
+
+IIT Kharagpur holds a unique place in India’s educational history as the first Indian Institute of Technology, established in 1951. What makes its origin even more remarkable is the land it stands on - the former Hijli Detention Camp, a British-era prison where many Indian freedom fighters were once imprisoned. After independence, these very buildings were repurposed into classrooms, laboratories, and offices, symbolizing a powerful transition from oppression to education. This transformation reflects the vision of a newly independent India that chose knowledge, innovation, and progress as its foundation for the future.
+
+## Growth and Legacy
+
+The journey of IIT Kharagpur began modestly with 224 students and 42 professors, but over the decades it has grown into a massive 2100-acre campus, one of the largest university campuses in Asia. Today, the institute hosts a diverse academic ecosystem with departments spanning engineering, sciences, management, law, architecture, and humanities. Beyond academics, IIT Kharagpur has built a legacy of research, innovation, and leadership, producing generations of engineers, entrepreneurs, researchers, and policymakers who have made significant contributions in India and across the world.
+
 ## The Beginning: JEE and First Semester
 
 Getting into IIT KGP was a dream come true. The Joint Entrance Examination (JEE) journey taught me resilience, but nothing could prepare me for the intensity of campus life.
