@@ -1,0 +1,219 @@
+name: Test Blog System
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'src/blogs/**'
+      - 'src/utils/blogLoader.js'
+      - 'src/pages/Blog.tsx'
+      - 'src/pages/BlogPost.tsx'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'src/blogs/**'
+      - 'src/utils/blogLoader.js'
+      - 'src/pages/Blog.tsx'
+      - 'src/pages/BlogPost.tsx'
+
+jobs:
+  validate-blogs:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate markdown files exist
+        run: |
+          echo "Checking for markdown files..."
+          if [ ! -d "src/blogs" ]; then
+            echo "Error: src/blogs directory not found"
+            exit 1
+          fi
+          
+          md_count=$(find src/blogs -name "*.md" | wc -l)
+          echo "Found $md_count markdown files"
+          
+          if [ $md_count -eq 0 ]; then
+            echo "Error: No markdown files found in src/blogs"
+            exit 1
+          fi
+
+      - name: Validate markdown frontmatter
+        run: |
+          echo "Validating frontmatter in markdown files..."
+          
+          for file in src/blogs/*.md; do
+            echo "Checking $file"
+            
+            # Check if frontmatter exists
+            if ! grep -q "^---" "$file"; then
+              echo "Error: $file missing frontmatter"
+              exit 1
+            fi
+            
+            # Extract frontmatter
+            frontmatter=$(awk '/^---$/{p++; next} p==1' "$file")
+            
+            # Check required fields
+            required_fields=("title:" "description:" "date:" "author:" "tags:")
+            for field in "${required_fields[@]}"; do
+              if ! echo "$frontmatter" | grep -q "$field"; then
+                echo "Error: $file missing required field: $field"
+                exit 1
+              fi
+            done
+            
+            echo "✓ $file is valid"
+          done
+          
+          echo "All markdown files validated successfully!"
+
+      - name: Build project
+        run: npm run build
+        env:
+          CI: true
+
+      - name: Test blog loader
+        run: |
+          node -e "
+          const fs = require('fs');
+          const path = require('path');
+          
+          // Simple test to verify blog files can be read
+          const blogsDir = path.join(__dirname, 'src/blogs');
+          const files = fs.readdirSync(blogsDir).filter(f => f.endsWith('.md'));
+          
+          console.log('Testing blog files...');
+          console.log('Found', files.length, 'blog files');
+          
+          if (files.length === 0) {
+            console.error('Error: No blog files found');
+            process.exit(1);
+          }
+          
+          // Verify each file can be read
+          files.forEach(file => {
+            const content = fs.readFileSync(path.join(blogsDir, file), 'utf-8');
+            if (!content) {
+              console.error('Error: Could not read', file);
+              process.exit(1);
+            }
+            console.log('✓', file, 'is readable');
+          });
+          
+          console.log('All blog files tested successfully!');
+          "
+
+      - name: Check for broken links in markdown
+        run: |
+          echo "Checking for broken internal links..."
+          
+          for file in src/blogs/*.md; do
+            echo "Checking links in $file"
+            
+            # Extract markdown links [text](url)
+            links=$(grep -oP '\[.*?\]\(\K[^)]+' "$file" || true)
+            
+            for link in $links; do
+              # Only check internal links (relative paths)
+              if [[ $link == /* ]] || [[ $link == ./* ]]; then
+                # Remove anchor tags
+                clean_link=$(echo "$link" | sed 's/#.*//')
+                
+                if [ -n "$clean_link" ] && [ ! -f "public$clean_link" ] && [ ! -f "src$clean_link" ]; then
+                  echo "Warning: Potentially broken link: $link in $file"
+                fi
+              fi
+            done
+          done
+          
+          echo "Link check complete!"
+
+      - name: Generate test report
+        if: always()
+        run: |
+          echo "# Blog System Test Report" > test-report.md
+          echo "" >> test-report.md
+          echo "## Summary" >> test-report.md
+          echo "- Total blogs: $(find src/blogs -name "*.md" | wc -l)" >> test-report.md
+          echo "- Build status: ${{ job.status }}" >> test-report.md
+          echo "- Date: $(date)" >> test-report.md
+          echo "" >> test-report.md
+          echo "## Blog Files" >> test-report.md
+          for file in src/blogs/*.md; do
+            echo "- $(basename $file)" >> test-report.md
+          done
+          
+          cat test-report.md
+
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: blog-test-report
+          path: test-report.md
+          retention-days: 30
+
+  lint-markdown:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install markdownlint
+        run: npm install -g markdownlint-cli
+
+      - name: Lint markdown files
+        run: |
+          markdownlint 'src/blogs/*.md' --config .markdownlint.json || true
+        continue-on-error: true
+
+  security-scan:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run security audit
+        run: npm audit --audit-level=moderate
+        continue-on-error: true
+
+      - name: Check for secrets in blog content
+        run: |
+          echo "Scanning for potential secrets in blog files..."
+          
+          # Check for common secret patterns
+          if grep -rE '(password|secret|api[_-]?key|token|private[_-]?key).*[:=].*[a-zA-Z0-9]{20,}' src/blogs/ --ignore-case; then
+            echo "Warning: Potential secrets found in blog files"
+            echo "Please review the files above"
+            exit 1
+          fi
+          
+          echo "No secrets detected!"

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+>
+  <url>
+    <loc>https://shashikant-kataria.vercel.app/</loc>
+    <lastmod>2025-11-15</lastmod>
+    <image:image>
+      <image:loc>https://shashikant-kataria.vercel.app/Shashikant-Kataria.png</image:loc>
+      <image:caption>Shashikant Kataria Portfolio</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://shashikant-kataria.vercel.app/about</loc>
+    <lastmod>2025-11-15</lastmod>
+    <image:image>
+      <image:loc>https://shashikant-kataria.vercel.app/Shashikant-Kataria.png</image:loc>
+      <image:caption>About Shashikant Kataria</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://shashikant-kataria.vercel.app/experience</loc>
+    <lastmod>2025-11-15</lastmod>
+    <image:image>
+      <image:loc>https://shashikant-kataria.vercel.app/Shashikant-Kataria.png</image:loc>
+      <image:caption>Experience of Shashikant Kataria</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://shashikant-kataria.vercel.app/projects</loc>
+    <lastmod>2025-11-15</lastmod>
+    <image:image>
+      <image:loc>https://shashikant-kataria.vercel.app/Shashikant-Kataria.png</image:loc>
+      <image:caption>Projects by Shashikant Kataria</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://shashikant-kataria.vercel.app/skills</loc>
+    <lastmod>2025-11-15</lastmod>
+    <image:image>
+      <image:loc>https://shashikant-kataria.vercel.app/Shashikant-Kataria.png</image:loc>
+      <image:caption>Skills of Shashikant Kataria</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://shashikant-kataria.vercel.app/pors</loc>
+    <lastmod>2025-11-15</lastmod>
+    <image:image>
+      <image:loc>https://shashikant-kataria.vercel.app/Shashikant-Kataria.png</image:loc>
+      <image:caption>PORS by Shashikant Kataria</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://shashikant-kataria.vercel.app/achievements</loc>
+    <lastmod>2025-11-15</lastmod>
+    <image:image>
+      <image:loc>https://shashikant-kataria.vercel.app/Shashikant-Kataria.png</image:loc>
+      <image:caption>Achievements of Shashikant Kataria</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://shashikant-kataria.vercel.app/resume</loc>
+    <lastmod>2025-11-15</lastmod>
+    <image:image>
+      <image:loc>https://shashikant-kataria.vercel.app/Shashikant-Kataria.png</image:loc>
+      <image:caption>Resume of Shashikant Kataria</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://shashikant-kataria.vercel.app/contact</loc>
+    <lastmod>2025-11-15</lastmod>
+    <image:image>
+      <image:loc>https://shashikant-kataria.vercel.app/Shashikant-Kataria.png</image:loc>
+      <image:caption>Contact Shashikant Kataria</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://github.com/shashix07</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://instagram.com/shashii.kant07</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.linkedin.com/in/shashikant-kataria/</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://x.com/Shashiikant007_</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://shashikant-kataria.vercel.app/blog/iit-kharagpur-journey</loc>
+    <lastmod>2024-11-10</lastmod>
+    <image:image>
+      <image:loc>https://shashikant-kataria.vercel.app/blog-images/iitkgp.jpeg</image:loc>
+      <image:caption>IIT Kharagpur Journey</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://shashikant-kataria.vercel.app/blog/getting-started-with-web3</loc>
+    <lastmod>2024-11-10</lastmod>
+    <image:image>
+      <image:loc>https://shashikant-kataria.vercel.app/blog-images/web3.jpeg</image:loc>
+      <image:caption>Getting Started with Web3</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://shashikant-kataria.vercel.app/blog/react-fastapi-fullstack</loc>
+    <lastmod>2024-11-10</lastmod>
+    <image:image>
+      <image:loc>https://shashikant-kataria.vercel.app/blog-images/iitkgp.jpeg</image:loc>
+      <image:caption>10 Tips for Effective Remote Work</image:caption>
+    </image:image>
+  </url>
+</urlset>
