@@ -18,6 +18,8 @@ import Resume from "./pages/Resume";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import Tools from "./pages/Tools";
+import QRCodeTool from "./pages/QRCodeTool";
 import NotFound from "./pages/NotFound";
 import { HelmetProvider } from "react-helmet-async"; // <-- Add this import
 
@@ -56,6 +58,8 @@ const AppContent = () => {
           <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
           <Route path="/blog" element={<PageWrapper><Blog /></PageWrapper>} />
           <Route path="/blog/:slug" element={<PageWrapper><BlogPost /></PageWrapper>} />
+          <Route path="/tools" element={<PageWrapper><Tools /></PageWrapper>} />
+          <Route path="/tools/qr-code" element={<PageWrapper><QRCodeTool /></PageWrapper>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </AnimatePresence>
