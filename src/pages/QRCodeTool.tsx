@@ -13,6 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { QRCodeCanvas } from "qrcode.react";
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 
 const QRCodeTool = () => {
   const { toast } = useToast();
@@ -44,6 +45,11 @@ const QRCodeTool = () => {
   const tooltipTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
+  const pageTitle = "QR Code Generator & Scanner | Shashikant Kataria";
+  const pageDescription =
+    "Generate and scan QR codes online with custom colors, sizes, logos, and optional password encryption. Fast, secure, and easy to use.";
+  const pageUrl = "https://shashikant-kataria.vercel.app/tools/qr-code";
+  const previewImage = "https://shashikant-kataria.vercel.app/Shashikant-Kataria.png";
 
   // Auto-scan when file is uploaded
   useEffect(() => {
@@ -476,6 +482,42 @@ const QRCodeTool = () => {
 
   return (
     <div className="min-h-screen pt-24 pb-16">
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <link rel="canonical" href={pageUrl} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:image" content={previewImage} />
+        <meta property="og:image:alt" content="QR Code Generator and Scanner" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={previewImage} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            name: "QR Code Generator & Scanner",
+            url: pageUrl,
+            description: pageDescription,
+            applicationCategory: "UtilityApplication",
+            operatingSystem: "All",
+            offers: {
+              "@type": "Offer",
+              price: "0",
+              priceCurrency: "USD",
+            },
+            author: {
+              "@type": "Person",
+              name: "Shashikant Kataria",
+              url: "https://shashikant-kataria.vercel.app/",
+            },
+          })}
+        </script>
+      </Helmet>
       <div className="container width-full px-2 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

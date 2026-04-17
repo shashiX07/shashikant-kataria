@@ -76,6 +76,14 @@
     </image:image>
   </url>
   <url>
+    <loc>https://shashikant-kataria.vercel.app/tools/qr-code</loc>
+    <lastmod>2026-04-17</lastmod>
+    <image:image>
+      <image:loc>https://shashikant-kataria.vercel.app/Shashikant-Kataria.png</image:loc>
+      <image:caption>QR Code Generator and Scanner</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://github.com/shashix07</loc>
     <priority>0.9</priority>
     <changefreq>weekly</changefreq>
